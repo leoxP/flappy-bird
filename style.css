@@ -1,11 +1,41 @@
+body{
+    display: flex;
+}
 .game-container{
     height: 730px;
     width:500px;
     position:absolute;
+    left: 80px;
+}
+
+.border-left{
+    height: 730px;
+    width: 80px;
+    position:absolute;
+    background-color: white;
+    z-index: 2;
+}
+
+.border-right{
+    left: 580px;
+    height: 730px;
+    width: 80px;
+    position:absolute;
+    background-color: white;
+    z-index: 1;
+}
+
+.border-top{
+    height: 70px;
+    width: 660px;
+    position:absolute;
+    background-color: white;
+    z-index: 2;
+    top: -50px;
 }
 
 .sky{
-    background-color: lightblue;
+    background-image: url('static/fb-game-background.png');
     height: 580px;
     width: 500px;
     position:absolute;
@@ -14,23 +44,34 @@
 /*position absolute - the element is positioned relative to the parent*/
 
 .ground{
-    background-color: brown;
+    background-image: url('static/bottom-background.png');
     height:150px;
     width: 500px;
     position: absolute;
     top:580px; 
     /*To give spacing for sky to be above*/
+    z-index: 1;
+    /*to keep ground ahead over pipes*/
 }
 
 .bird{
-    background-color: yellow;
+    background-image: url('static/flappy-bird.png');
     position: absolute;
     height: 45px;
     width: 60px;
 }
 
 .obstacle{
-    background-color: greenyellow;
+    background-image: url('static/flappybird-pipe.png');
+    height:300px;
+    width: 60px;
+    position: absolute;
+}
+
+/*Top obstacle created by rotating obstacle by 180 degrees and adding a gap*/
+.topObstacle{
+    background-image: url('static/flappybird-pipe.png');
+    transform: rotate(180deg);
     height:300px;
     width: 60px;
     position: absolute;
