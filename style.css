@@ -15,11 +15,11 @@ body{
 }
 
 .border-left{
-    height: 730px;
+    height: 900px;
     width: 80px;
     position:absolute;
     background-color: white;
-    z-index: 2;
+    z-index: 3 ;
 }
 
 .border-right{
@@ -36,8 +36,8 @@ body{
     width: 660px;
     position:absolute;
     background-color: white;
-    z-index: 2;
-    top: -50px;
+    z-index: 3;
+    top: -60px;
 }
 
 .score{

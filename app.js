@@ -5,12 +5,12 @@ document.addEventListener('DOMContentLoaded',()=>{
     const ground=document.querySelector('.ground');
     const score=document.querySelector('.score');
 
-    let birdLeft=220;
-    let birdBottom=100;
-    let gravity=2;
-    let isGameOver=false;
-    let gap=430;
-    let count=-1;
+    var birdLeft=220;
+    var birdBottom=100;
+    var gravity=2;
+    var isGameOver=false;
+    var gap=430;
+    var count=-1;
     score.innerHTML="Score: "+count;
 
     function startGame(){
@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     function gameOver(){
         clearInterval(gametimerId);
-        isGameOver=true;
         document.removeEventListener('keyup',control);
+        document.location.reload();
     }
 
     document.addEventListener('keyup',control);
@@ -53,8 +53,6 @@ document.addEventListener('DOMContentLoaded',()=>{
         if(!isGameOver){ 
             obstacle.classList.add('obstacle');
             topObstacle.classList.add('topObstacle');
-            count+=1;
-            score.innerHTML="Score: "+count;
         }
 
         gameDisplay.appendChild(obstacle);
@@ -64,6 +62,13 @@ document.addEventListener('DOMContentLoaded',()=>{
         topObstacle.style.left=obstacleLeft+'px';
         obstacle.style.bottom=obstacleBottom+'px';
         topObstacle.style.bottom=obstacleBottom+gap+'px';
+
+        console.log(birdLeft,obstacleLeft);
+
+        if(birdLeft>=obstacleLeft-280 && !isGameOver){
+            count+=1;
+            score.innerHTML="Score: "+count;
+        }
 
         function moveObstacle(){
             obstacleLeft-=2;
@@ -80,6 +85,7 @@ document.addEventListener('DOMContentLoaded',()=>{
                 obstacleLeft>200 && obstacleLeft<280 && birdLeft===220 && (birdBottom+150<=obstacleBottom+300 || birdBottom>=obstacleBottom+gap-195)||
                 birdBottom===0
                 ){
+                isGameOver=true;
                 gameOver();
                 clearInterval(timerId); 
                 //checking for collision around the center of the grid
@@ -88,7 +94,9 @@ document.addEventListener('DOMContentLoaded',()=>{
         let timerId=setInterval(moveObstacle,20);
 
         //generating new obstacles every 3 seconds
-        if(!isGameOver) setTimeout(generateObstacle,5000); 
+        if(!isGameOver){
+            setTimeout(generateObstacle,3000); 
+        }
     }
 
     generateObstacle();
