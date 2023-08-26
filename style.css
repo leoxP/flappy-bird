@@ -1,3 +1,9 @@
+@font-face {
+    font-family: flappybird;
+    src: url('http://www.mediafont.com/storage/contents/3184/font.eot'); /* IE */ 
+    src: url('http://www.mediafont.com/storage/contents/3184/04B_19__.TTF'); /* non-IE */ 
+}
+
 body{
     display: flex;
 }
@@ -32,6 +38,17 @@ body{
     background-color: white;
     z-index: 2;
     top: -50px;
+}
+
+.score{
+    top:50px;
+    left:40px;
+    font-family: flappybird;
+    position:absolute;
+    font-size: 4vw;
+    z-index: 2;
+    color:white;
+    text-shadow: 5px 3px black;
 }
 
 .sky{
